@@ -1,6 +1,7 @@
-package infnet.edu.petfriends_cliente_service.interfaces;
+package edu.br.infnet.petfriends_cliente_service.interfaces;
 
-import infnet.edu.petfriends_cliente_service.application.ClienteService;
+
+import edu.br.infnet.petfriends_cliente_service.application.ClienteService;
 import infnet.edu.petfriends_cliente_service.domain.vo.Endereco;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -14,7 +15,7 @@ public class ClienteController {
     private ClienteService clienteService;
 
     @GetMapping("/{id}/endereco")
-    public ResponseEntity<Endereco> buscarEnderecoPorClienteId(@PathVariable Long id) {
+    public ResponseEntity<Endereco> getEnderecoCliente(@PathVariable Long id) {
         return clienteService.buscarEnderecoPorClienteId(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());

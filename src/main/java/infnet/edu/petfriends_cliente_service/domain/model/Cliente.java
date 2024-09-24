@@ -13,9 +13,9 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Cliente {
 
     @Id
@@ -27,5 +27,5 @@ public class Cliente {
     private String telefone;
 
     @Embedded
-    private Endereco endereco;
+    private Endereco endereco; // O campo @Embedded deve estar configurado corretamente
 }
