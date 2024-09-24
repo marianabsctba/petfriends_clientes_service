@@ -6,6 +6,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -22,10 +25,17 @@ public class Cliente {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotEmpty(message = "O nome não pode estar vazio")
     private String nome;
+
+    @NotEmpty(message = "O email não pode estar vazio")
+    @Email(message = "Formato de email inválido")
     private String email;
+
+    @NotEmpty(message = "O telefone não pode estar vazio")
     private String telefone;
 
     @Embedded
-    private Endereco endereco; // O campo @Embedded deve estar configurado corretamente
+    @NotNull(message = "O endereço não pode ser nulo")
+    private Endereco endereco;  // Value Object
 }
